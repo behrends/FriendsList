@@ -9,8 +9,16 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Freunde" component={HomeScreen} />
-        <Tab.Screen name="Einstellungen" component={SettingsScreen} />
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: 'Freunde' }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{ title: 'Einstellungen' }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
