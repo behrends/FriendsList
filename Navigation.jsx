@@ -15,9 +15,16 @@ export default function Navigation() {
           component={HomeScreen}
           options={{
             title: 'Freunde',
-            tabBarIcon: ({ size, color }) => (
-              <Icon.Ionicons name="home" size={size} color={color} />
-            ),
+            tabBarIcon: ({ focused, size, color }) => {
+              const icon = focused ? 'home' : 'home-outline';
+              return (
+                <Icon.Ionicons
+                  name={icon}
+                  size={size}
+                  color={color}
+                />
+              );
+            },
           }}
         />
         <Tab.Screen
@@ -25,13 +32,16 @@ export default function Navigation() {
           component={SettingsScreen}
           options={{
             title: 'Einstellungen',
-            tabBarIcon: ({ size, color }) => (
-              <Icon.Ionicons
-                name="settings"
-                size={size}
-                color={color}
-              />
-            ),
+            tabBarIcon: ({ focused, size, color }) => {
+              const icon = focused ? 'settings' : 'settings-outline';
+              return (
+                <Icon.Ionicons
+                  name={icon}
+                  size={size}
+                  color={color}
+                />
+              );
+            },
           }}
         />
       </Tab.Navigator>
