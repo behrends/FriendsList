@@ -9,14 +9,15 @@ const Tab = createBottomTabNavigator();
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            title: 'Freunde',
+      <Tab.Navigator
+        screenOptions={({ route }) => {
+          return {
             tabBarIcon: ({ focused, size, color }) => {
-              const icon = focused ? 'home' : 'home-outline';
+              let icon;
+              if (route.name === 'Home')
+                icon = focused ? 'home' : 'home-outline';
+              else if (route.name === 'Settings')
+                icon = focused ? 'settings' : 'settings-outline';
               return (
                 <Icon.Ionicons
                   name={icon}
@@ -25,6 +26,14 @@ export default function Navigation() {
                 />
               );
             },
+          };
+        }}
+      >
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: 'Freunde',
           }}
         />
         <Tab.Screen
@@ -32,16 +41,6 @@ export default function Navigation() {
           component={SettingsScreen}
           options={{
             title: 'Einstellungen',
-            tabBarIcon: ({ focused, size, color }) => {
-              const icon = focused ? 'settings' : 'settings-outline';
-              return (
-                <Icon.Ionicons
-                  name={icon}
-                  size={size}
-                  color={color}
-                />
-              );
-            },
           }}
         />
       </Tab.Navigator>
