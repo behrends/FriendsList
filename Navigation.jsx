@@ -26,6 +26,8 @@ export default function Navigation() {
                 />
               );
             },
+            tabBarActiveTintColor: 'orange',
+            tabBarStyle: { backgroundColor: 'aliceblue' },
           };
         }}
       >
