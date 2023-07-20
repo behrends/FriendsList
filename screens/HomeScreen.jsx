@@ -1,18 +1,31 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
+import {
+  Button,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>Liste von Kontakten</Text>
-      <Button
-        title="Gehe zu Alice"
-        onPress={() =>
-          navigation.navigate('Friend', { name: 'Alice' })
-        }
-      />
-      <Button
-        title="Gehe zu Bob"
-        onPress={() => navigation.navigate('Friend', { name: 'Bob' })}
+      <FlatList
+        data={[
+          { name: 'Alice' },
+          { name: 'Bob' },
+          { name: 'Jane' },
+          { name: 'Joe' },
+        ]}
+        renderItem={({ item }) => {
+          return (
+            <Button
+              title={`Gehe zu ${item.name}`}
+              onPress={() =>
+                navigation.navigate('Friend', { name: item.name })
+              }
+            />
+          );
+        }}
       />
     </View>
   );
@@ -24,5 +37,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 50,
   },
 });
