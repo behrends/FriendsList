@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import FriendListItem from '../components/FriendListItem';
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -16,16 +17,14 @@ export default function HomeScreen({ navigation }) {
           { name: 'Jane' },
           { name: 'Joe' },
         ]}
-        renderItem={({ item }) => {
-          return (
-            <Button
-              title={`Gehe zu ${item.name}`}
-              onPress={() =>
-                navigation.navigate('Friend', { name: item.name })
-              }
-            />
-          );
-        }}
+        renderItem={({ item }) => (
+          <FriendListItem
+            friend={item}
+            onPress={() =>
+              navigation.navigate('Friend', { name: item.name })
+            }
+          />
+        )}
         keyExtractor={(item) => item.name}
       />
     </View>
