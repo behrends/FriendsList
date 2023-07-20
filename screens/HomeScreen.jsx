@@ -26,6 +26,7 @@ export default function HomeScreen({ navigation }) {
             />
           );
         }}
+        keyExtractor={(item) => item.name}
       />
     </View>
   );
