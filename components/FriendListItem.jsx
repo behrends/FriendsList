@@ -1,4 +1,10 @@
-import { Image, Pressable, StyleSheet, Text } from 'react-native';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 export default function FriendListItem({ friend, onPress }) {
   return (
@@ -7,9 +13,12 @@ export default function FriendListItem({ friend, onPress }) {
         style={styles.image}
         source={require('../assets/icon.png')}
       />
-      <Text>
-        {friend.first} {friend.last}
-      </Text>
+      <View style={styles.info}>
+        <Text style={styles.name}>
+          {friend.first} {friend.last}
+        </Text>
+        <Text style={styles.email}>{friend.email}</Text>
+      </View>
     </Pressable>
   );
 }
@@ -17,10 +26,24 @@ export default function FriendListItem({ friend, onPress }) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: 50,
+    alignItems: 'center',
+    gap: 10,
+    height: 70,
+    padding: 10,
+  },
+  info: {
+    justifyContent: 'space-evenly',
+  },
+  name: {
+    fontSize: 20,
+  },
+  email: {
+    fontSize: 16,
+    fontWeight: '100',
   },
   image: {
-    width: 30,
-    height: 30,
+    borderRadius: 25,
+    width: 50,
+    height: 50,
   },
 });
