@@ -1,14 +1,14 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 export default function FriendScreen({ navigation, route }) {
   const { name } = route.params;
   return (
     <View style={styles.container}>
-      <Text>{name}</Text>
-      <Button
-        title="Gehe zurück"
-        onPress={() => navigation.goBack()}
+      <Image
+        style={styles.image}
+        source={require('../assets/icon.png')}
       />
+      <Text>{name}</Text>
     </View>
   );
 }
@@ -19,5 +19,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  image: {
+    width: 100,
+    height: 100,
   },
 });
