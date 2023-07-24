@@ -1,7 +1,9 @@
-import { Button } from 'react-native';
+import { Pressable, Text } from 'react-native';
 
 export default function FriendListItem({ friend, onPress }) {
   return (
-    <Button title={`Gehe zu ${friend.name}`} onPress={onPress} />
+    <Pressable style={{ height: 50 }} onPress={onPress}>
+      <Text>{friend.name}</Text>
+    </Pressable>
   );
 }

@@ -1,10 +1,4 @@
-import {
-  Button,
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import FriendListItem from '../components/FriendListItem';
 
 export default function HomeScreen({ navigation }) {
@@ -36,8 +30,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
     paddingTop: 50,
   },
   listSeparator: {
