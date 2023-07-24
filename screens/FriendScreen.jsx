@@ -1,6 +1,14 @@
-import { Image, StyleSheet, Text, ScrollView } from 'react-native';
+import {
+  useWindowDimensions,
+  Image,
+  StyleSheet,
+  Text,
+  ScrollView,
+} from 'react-native';
 
 export default function FriendScreen({ navigation, route }) {
+  const { width } = useWindowDimensions();
+  const imageWidth = width * 0.8;
   const { name } = route.params;
   return (
     <ScrollView
@@ -8,7 +16,7 @@ export default function FriendScreen({ navigation, route }) {
       style={styles.scrollView}
     >
       <Image
-        style={styles.image}
+        style={{ width: imageWidth, height: imageWidth }}
         source={require('../assets/icon.png')}
       />
       <Text>{name}</Text>
@@ -25,9 +33,5 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     backgroundColor: '#fff',
-  },
-  image: {
-    width: 250,
-    height: 250,
   },
 });
