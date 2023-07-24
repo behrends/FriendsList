@@ -9,7 +9,7 @@ import {
 export default function FriendScreen({ navigation, route }) {
   const { width } = useWindowDimensions();
   const imageWidth = width * 0.8;
-  const { name } = route.params;
+  const { friend } = route.params;
   return (
     <ScrollView
       contentContainerStyle={styles.container}
@@ -19,7 +19,9 @@ export default function FriendScreen({ navigation, route }) {
         style={{ width: imageWidth, height: imageWidth }}
         source={require('../assets/icon.png')}
       />
-      <Text>{name}</Text>
+      <Text>
+        {friend.first} {friend.last}
+      </Text>
     </ScrollView>
   );
 }
