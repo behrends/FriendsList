@@ -14,12 +14,17 @@ export default function HomeScreen({ navigation }) {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(
-        'https://randomuser.me/api?results=20'
-      );
-      const json = await response.json();
-      setData(json.results);
-      setLoading(false);
+      try {
+        const response = await fetch(
+          'https://rand123omuser.me/api?results=20'
+        );
+        const json = await response.json();
+        setData(json.results);
+        setLoading(false);
+      } catch (error) {
+        alert('Fehler beim Laden');
+        setLoading(false);
+      }
     }
     fetchData();
   }, []);
