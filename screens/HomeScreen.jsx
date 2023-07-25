@@ -1,5 +1,11 @@
-import { useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import FriendListItem from '../components/FriendListItem';
 
 const dummyData = [
@@ -19,6 +25,27 @@ const dummyData = [
 
 export default function HomeScreen({ navigation }) {
   const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    console.log('USE EFFECT');
+    // Daten laden
+    async function fetchData() {
+      // Simulation: langsames Laden (3 Sekunden warten)
+      await new Promise((_) => setTimeout(_, 3000));
+      setData(dummyData);
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View style={styles.center}>
+        <ActivityIndicator size="large" color="darkorange" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -47,6 +74,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingTop: 50,
+  },
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   listSeparator: {
     height: StyleSheet.hairlineWidth,
