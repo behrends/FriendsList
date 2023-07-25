@@ -15,7 +15,7 @@ export default function FriendListItem({ friend, onPress }) {
       />
       <View style={styles.info}>
         <Text style={styles.name}>
-          {friend.first} {friend.last}
+          {friend.name.first} {friend.name.last}
         </Text>
         <Text style={styles.email}>{friend.email}</Text>
       </View>

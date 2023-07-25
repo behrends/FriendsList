@@ -8,32 +8,17 @@ import {
 } from 'react-native';
 import FriendListItem from '../components/FriendListItem';
 
-const dummyData = [
-  {
-    first: 'Alice',
-    last: 'Smith',
-    email: 'test1@example.com',
-  },
-  { first: 'Bob', last: 'Smith', email: 'test2@example.com' },
-  {
-    first: 'Jane',
-    last: 'Smith',
-    email: 'test3@example.com',
-  },
-  { first: 'Joe', last: 'Smith', email: 'test4@example.com' },
-];
-
 export default function HomeScreen({ navigation }) {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log('USE EFFECT');
-    // Daten laden
     async function fetchData() {
-      // Simulation: langsames Laden (3 Sekunden warten)
-      await new Promise((_) => setTimeout(_, 3000));
-      setData(dummyData);
+      const response = await fetch(
+        'https://randomuser.me/api?results=20'
+      );
+      const json = await response.json();
+      setData(json.results);
       setLoading(false);
     }
     fetchData();

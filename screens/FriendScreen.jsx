@@ -20,7 +20,7 @@ export default function FriendScreen({ navigation, route }) {
         source={require('../assets/icon.png')}
       />
       <Text>
-        {friend.first} {friend.last}
+        {friend.name.first} {friend.name.last}
       </Text>
     </ScrollView>
   );

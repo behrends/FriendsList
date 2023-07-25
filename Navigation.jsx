@@ -25,7 +25,7 @@ function HomeStack() {
         name="Friend"
         component={FriendScreen}
         options={({ route }) => {
-          const { first, last } = route.params.friend;
+          const { first, last } = route.params.friend.name;
           return {
             title: `${first} ${last}`,
           };
