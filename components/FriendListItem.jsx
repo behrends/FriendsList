@@ -11,7 +11,7 @@ export default function FriendListItem({ friend, onPress }) {
     <Pressable style={styles.container} onPress={onPress}>
       <Image
         style={styles.image}
-        source={require('../assets/icon.png')}
+        source={{ uri: friend.picture.thumbnail }}
       />
       <View style={styles.info}>
         <Text style={styles.name}>

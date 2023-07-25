@@ -17,7 +17,7 @@ export default function FriendScreen({ navigation, route }) {
     >
       <Image
         style={{ width: imageWidth, height: imageWidth }}
-        source={require('../assets/icon.png')}
+        source={{ uri: friend.picture.large }}
       />
       <Text>
         {friend.name.first} {friend.name.last}
